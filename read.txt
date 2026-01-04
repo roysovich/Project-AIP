@@ -1,0 +1,221 @@
+Swagger документация
+1. Настройка Swagger в проекте
+Запрос:
+
+text
+Настрой Swagger для проекта money-project:
+1. Установи зависимости в package.json: swagger-ui-express, swagger-jsdoc
+2. Создай конфигурацию Swagger в server.js:
+   - openapi: '3.0.0'
+   - title: 'Money Project API'
+   - version: '1.0.0'
+   - description: 'API для управления валютами, криптовалютами, новостями и транзакциями'
+   - servers: http://localhost:3000
+   - apis: ['./app/routes/*.routes.js']
+3. Подключи Swagger UI по адресу /api-docs
+2. Создание базовых схем (schemas)
+Запрос:
+
+text
+Создай Swagger схемы для всех моделей в app/routes/currency.routes.js:
+1. Currency schema:
+   - id, code, name, symbol, rate_to_usd, last_updated
+2. CryptoCurrency schema:
+   - symbol, name, current_price_usd, market_cap, price_change_24h, volume_24h
+3. NewsArticle schema:
+   - title, description, url, source, published_at, category
+4. User schema:
+   - name, email, phone, preferred_currency
+5. Transaction schema:
+   - from_currency, to_currency, amount, converted_amount, rate_used, status
+Размести схемы в блоке @swagger components/schemas
+3. Документирование CRUD операций для валют
+Запрос:
+
+text
+Добавь Swagger аннотации в currency.routes.js для всех методов:
+1. GET /api/currencies - получение всех валют
+   - description: Получить список всех валют
+   - responses: 200 с массивом Currency
+
+2. POST /api/currencies - создание валюты
+   - requestBody: Currency schema
+   - responses: 201 Created
+
+3. GET /api/currencies/:id - получение валюты по ID
+   - parameters: id in path
+   - responses: 200 с Currency или 404
+
+4. PUT /api/currencies/:id - обновление валюты
+   - parameters: id in path
+   - requestBody: Currency schema
+   - responses: 200
+
+5. DELETE /api/currencies/:id - удаление валюты
+   - parameters: id in path
+   - responses: 204
+
+6. DELETE /api/currencies - удаление всех валют
+   - responses: 200 с сообщением
+4. Документирование нестандартных запросов
+Запрос:
+
+text
+Добавь Swagger документацию для нестандартных методов:
+
+1. GET /api/currencies/stats - статистика по валютам
+   - description: Статистика использования валют в транзакциях
+   - responses: массив объектов со статистикой
+
+2. GET /api/currencies/highest-rate - валюта с наивысшим курсом
+   - description: Найти валюту с максимальным курсом к USD
+
+3. GET /api/currencies/search/{pattern} - поиск по символу
+   - parameters: pattern in path
+   - description: Поиск валют по паттерну символа
+
+4. GET /api/currencies/{id}/exchange-stats - статистика обмена
+   - parameters: id in path
+   - description: Статистика конвертаций для конкретной валюты
+
+Для каждого метода укажи параметры, примеры ответов и возможные ошибки.
+5. Документирование API криптовалют
+Запрос:
+
+text
+Добавь Swagger аннотации в crypto.routes.js:
+1. Все CRUD методы (GET, POST, GET/:id, PUT/:id, DELETE/:id, DELETE)
+2. GET /api/crypto/refresh - обновление курсов через CoinGecko
+   - description: Обновить цены криптовалют из внешнего API
+3. GET /api/crypto/top-gainers - топ растущих криптовалют
+   - description: Топ-3 криптовалюты с наибольшим ростом за 24 часа
+4. GET /api/crypto/volatile - волатильные криптовалюты
+   - description: Криптовалюты с изменением цены > 5%
+
+Используй теги @swagger для группировки методов по тегам: [Crypto]
+6. Документирование калькулятора конвертации
+Запрос:
+
+text
+Добавь Swagger документацию для калькулятора в transaction.routes.js:
+
+1. POST /api/transactions/convert - конвертация валют
+   - tags: [Calculator]
+   - requestBody:
+     - from: string (код валюты)
+     - to: string (код валюты)
+     - amount: number
+     - user_id: integer (опционально)
+   - responses: 
+     - 200: { from, to, amount, converted_amount, rate, is_crypto }
+     - 400: ошибка валидации
+     - 404: валюта не найдена
+
+2. GET /api/transactions/conversion-volume - объем конвертаций
+   - description: Объем конвертаций по валютам за период
+
+3. GET /api/transactions/daily-summary - дневная сводка
+   - description: Сводка операций за текущий день
+7. Документирование пагинации
+Запрос:
+
+text
+Добавь поддержку пагинации и Swagger документацию:
+
+1. В currency.controller.js создай метод findAllPaged:
+   - Принимает query параметры: page, size
+   - Возвращает: { totalItems, totalPages, currentPage, items }
+
+2. Добавь маршрут GET /api/currencies/paged в currency.routes.js
+
+3. Добавь Swagger документацию:
+   - parameters:
+     - name: page, in: query, required: false, default: 1
+     - name: size, in: query, required: false, default: 10
+   - responses: 200 с пагинированным результатом
+
+Сделай аналогично для других сущностей (crypto, news, transactions).
+8. Документирование API новостей
+Запрос:
+
+text
+Добавь Swagger аннотации в news.routes.js:
+1. Все CRUD операции
+2. GET /api/news/refresh - обновление новостей (mock)
+   - description: Добавить новые mock новости
+3. GET /api/news/latest/{category} - последние новости по категории
+   - parameters: category in path
+   - description: Получить последние новости по категории (forex, cryptocurrency, stocks)
+4. Пагинация: GET /api/news/paged
+
+Добавь тег [News] для группировки.
+9. Создание тегов и организации документации
+Запрос:
+
+text
+Организуй Swagger документацию с тегами:
+1. Добавь в начало каждого routes файла теги:
+   - @swagger tags: [{ name: 'Currency', description: 'Операции с валютами' }]
+   - Аналогично для Crypto, News, Transactions, Users, Calculator
+
+2. Создай главную страницу документации с описанием проекта:
+   - @swagger info: добавить контактную информацию, лицензию
+   - Описание проекта: Система отслеживания курсов валют и криптовалют
+
+3. Добавь примеры запросов и ответов для каждого метода.
+10. Пример полного метода с Swagger
+Запрос:
+
+text
+Покажи пример полной Swagger документации для метода обновления курсов валют:
+
+/**
+ * @swagger
+ * /api/currencies/refresh:
+ *   get:
+ *     tags: [Currency]
+ *     summary: Обновить курсы валют из внешнего API
+ *     description: Запрашивает актуальные курсы валют с exchangerate-api.com и обновляет их в базе данных
+ *     responses:
+ *       200:
+ *         description: Курсы успешно обновлены
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: 'Курсы валют обновлены'
+ *                 currencies:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/Currency'
+ *       500:
+ *         description: Ошибка при обновлении курсов
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: 'Ошибка при обновлении курсов валют'
+ */
+11. Тестирование Swagger UI
+Запрос:
+
+text
+После реализации Swagger, создай инструкцию для тестирования:
+1. Запусти сервер: npm start
+2. Открой в браузере: http://localhost:3000/api-docs
+3. Протестируй через Swagger UI:
+   - GET /api/currencies - получение всех валют
+   - POST /api/currencies - создание новой валюты
+   - GET /api/currencies/refresh - обновление курсов
+   - POST /api/transactions/convert - конвертация валют
+
+Создай примеры тестовых данных для каждого метода.

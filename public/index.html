@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мир Денег - История, Курсы, Криптовалюты</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <nav>
+                <div class="logo">💰 Мир Денег</div>
+                <ul class="nav-links">
+                    <li><a href="#history">История</a></li>
+                    <li><a href="#evolution">Эволюция</a></li>
+                    <li><a href="#rates">Курсы</a></li>
+                    <li><a href="#crypto">Крипта</a></li>
+                    <li><a href="#calculator">Калькулятор</a></li>
+                    <li><a href="#news">Новости</a></li>
+                    <li><a href="/admin" class="admin-link">Админ</a></li>
+                </ul>
+            </nav>
+            <div class="hero-content">
+                <h1 class="hero-title">Мир Денег</h1>
+                <p class="hero-subtitle">От ракушек до биткоина: вся история денег в одном месте</p>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">💵</div>
+                        <div class="stat-value" id="currencies-count">10</div>
+                        <div class="stat-label">Валют</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">₿</div>
+                        <div class="stat-value" id="crypto-count">6</div>
+                        <div class="stat-label">Криптовалют</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📰</div>
+                        <div class="stat-value" id="news-count">20</div>
+                        <div class="stat-label">Новостей</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- История денег -->
+    <section id="history" class="section history-section">
+        <div class="container">
+            <h2 class="section-title">💫 История появления денег</h2>
+            <div class="history-content">
+                <div class="history-text">
+                    <h3>От бартера к универсальному средству обмена</h3>
+                    <p>
+                        <strong>До появления денег</strong> люди использовали <em>бартер</em> — прямой обмен товарами.
+                        Но возникла проблема: как обменять корову на хлеб, если пекарю не нужна целая корова?
+                    </p>
+                    <p>
+                        Около <strong>9000-6000 лет до н.э.</strong> появились первые <em>товарные деньги</em>:
+                        ракушки, зерно, скот, соль. Слово "salary" (зарплата) происходит от латинского "sal" (соль) —
+                        римским солдатам платили солью!
+                    </p>
+                    <p>
+                        <strong>~2500 лет до н.э.</strong> в Месопотамии начали использовать взвешенное серебро.
+                        Это был прорыв: одинаковая ценность, легко делить, удобно хранить.
+                    </p>
+                    <p>
+                        <strong>~600 лет до н.э.</strong> в Лидии (современная Турция) появились первые чеканенные
+                        монеты
+                        из сплава золота и серебра. Это стандартизировало деньги и устранило необходимость взвешивания.
+                    </p>
+                    <p>
+                        <strong>VII век н.э.</strong> в Китае изобрели бумажные деньги. Европа переняла эту идею только
+                        в XVII веке. Бумажные деньги были обеспечены золотом (золотой стандарт).
+                    </p>
+                    <p>
+                        <strong>1971 год</strong> — отмена золотого стандарта. Доллар США стал фиатной валютой,
+                        обеспеченной только доверием к правительству.
+                    </p>
+                    <p>
+                        <strong>2009 год</strong> — появление Bitcoin, первой децентрализованной криптовалюты.
+                        Началась эра цифровых денег без центрального контроля.
+                    </p>
+                </div>
+                <div class="history-visual">
+                    <div class="timeline-vertical">
+                        <div class="timeline-item">
+                            <div class="timeline-icon">🐚</div>
+                            <div class="timeline-content">
+                                <strong>9000 до н.э.</strong>
+                                <p>Товарные деньги</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">⚖️</div>
+                            <div class="timeline-content">
+                                <strong>2500 до н.э.</strong>
+                                <p>Взвешенное серебро</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">🪙</div>
+                            <div class="timeline-content">
+                                <strong>600 до н.э.</strong>
+                                <p>Первые монеты</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">📜</div>
+                            <div class="timeline-content">
+                                <strong>VII в. н.э.</strong>
+                                <p>Бумажные деньги</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">💳</div>
+                            <div class="timeline-content">
+                                <strong>1950</strong>
+                                <p>Кредитные карты</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">₿</div>
+                            <div class="timeline-content">
+                                <strong>2009</strong>
+                                <p>Криптовалюты</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Эволюция денег -->
+    <section id="evolution" class="section evolution-section">
+        <div class="container">
+            <h2 class="section-title">🔄 Эволюция форм денег</h2>
+            <div class="evolution-grid">
+                <div class="evolution-card">
+                    <div class="evo-icon">🐚</div>
+                    <h3>Ракушки Каури</h3>
+                    <p>Использовались в Африке, Азии и Океании тысячи лет. Редкие, красивые, долговечные.</p>
+                    <span class="evo-period">~1200 до н.э. - XIX век</span>
+                </div>
+                <div class="evolution-card">
+                    <div class="evo-icon">🧂</div>
+                    <h3>Соль</h3>
+                    <p>Ценный товар для консервации пищи. Римские легионеры получали "salarium" (зарплату солью).</p>
+                    <span class="evo-period">Древний Рим</span>
+                </div>
+                <div class="evolution-card">
+                    <div class="evo-icon">🥜</div>
+                    <h3>Зерно и какао-бобы</h3>
+                    <p>Ацтеки использовали какао-бобы как деньги. Шумеры расплачивались зерном.</p>
+                    <span class="evo-period">~3000 до н.э. - XVI век</span>
+                </div>
+                <div class="evolution-card">
+                    <div class="evo-icon">🪙</div>
+                    <h3>Золотые и серебряные монеты</h3>
+                    <p>Стандартизированная форма денег. Ценность определялась весом драгоценного металла.</p>
+                    <span class="evo-period">~600 до н.э. - XX век</span>
+                </div>
+                <div class="evolution-card">
+                    <div class="evo-icon">💵</div>
+                    <h3>Бумажные купюры</h3>
+                    <p>Первоначально расписки на золото, хранящееся в банке. Легче и удобнее монет.</p>
+                    <span class="evo-period">VII век - наши дни</span>
+                </div>
+                <div class="evolution-card">
+                    <div class="evo-icon">💳</div>
+                    <h3>Банковские карты</h3>
+                    <p>Электронные платежи, безналичные расчеты. Первая кредитная карта появилась в 1950 году.</p>
+                    <span class="evo-period">1950 - наши дни</span>
+                </div>
+                <div class="evolution-card">
+                    <div class="evo-icon">📱</div>
+                    <h3>Мобильные платежи</h3>
+                    <p>Apple Pay, Google Pay, Alipay. Смартфон как кошелек.</p>
+                    <span class="evo-period">2010-е - наши дни</span>
+                </div>
+                <div class="evolution-card">
+                    <div class="evo-icon">₿</div>
+                    <h3>Криптовалюты</h3>
+                    <p>Децентрализованные цифровые деньги на основе блокчейна. Bitcoin, Ethereum и тысячи других.</p>
+                    <span class="evo-period">2009 - наши дни</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Курсы валют -->
+    <section id="rates" class="section rates-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">💱 Курсы валют в реальном времени</h2>
+                <button class="refresh-btn" onclick="refreshCurrencies()">🔄 Обновить</button>
+            </div>
+            <div class="rates-grid" id="rates-grid">
+                <!-- Заполняется динамически -->
+            </div>
+            <div class="last-updated" id="rates-updated">Данные загружаются...</div>
+        </div>
+    </section>
+
+    <!-- Криптовалюты -->
+    <section id="crypto" class="section crypto-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">₿ Криптовалюты</h2>
+                <button class="refresh-btn" onclick="refreshCrypto()">🔄 Обновить</button>
+            </div>
+            <div class="crypto-grid" id="crypto-grid">
+                <!-- Заполняется динамически -->
+            </div>
+            <div class="last-updated" id="crypto-updated">Данные загружаются...</div>
+        </div>
+    </section>
+
+    <!-- Калькулятор -->
+    <section id="calculator" class="section calculator-section">
+        <div class="container">
+            <h2 class="section-title">🧮 Универсальный калькулятор валют</h2>
+            <div class="calculator-box">
+                <div class="calc-input-group">
+                    <label>Из валюты:</label>
+                    <div class="input-row">
+                        <input type="number" id="from-amount" value="100" min="0" step="0.01">
+                        <select id="from-currency">
+                            <!-- Заполняется динамически -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="calc-swap-btn" onclick="swapCurrencies()">⇄</div>
+
+                <div class="calc-input-group">
+                    <label>В валюту:</label>
+                    <div class="input-row">
+                        <input type="number" id="to-amount" readonly>
+                        <select id="to-currency">
+                            <!-- Заполняется динамически -->
+                        </select>
+                    </div>
+                </div>
+
+                <button class="convert-btn" onclick="convert()">Конвертировать</button>
+
+                <div class="calc-result" id="calc-result"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Новости -->
+    <section id="news" class="section news-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">📰 Финансовые новости</h2>
+                <button class="refresh-btn" onclick="refreshNews()">🔄 Обновить</button>
+            </div>
+            <div class="news-grid" id="news-grid">
+                <!-- Заполняется динамически -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Мир Денег. Образовательный проект о деньгах и финансах.</p>
+            <p>Данные о курсах и криптовалютах обновляются в реальном времени</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
